@@ -15,8 +15,23 @@
 using namespace std;
 
 //封装WIFI Socket通信的类
-class SocketConnection{
+/*
+//用法示例
+char*  carname = "blueCar";
+char ipAddress[] = "192.168.1.1";
+int ipPort = 2001;
+SocketConnection socketTest(carname, ipAddress, ipPort);//初始化对象
 
+//发送示例
+send(socketTest.sockClient, "hello\n", strlen("hello\n") + 1, 0);
+//或者
+sockettest.sendMessageToCar("hello\n", strlen("hello\n") + 1);
+//或者
+char data[] = { 0xAA,0xBB,0xCC,0xDD,0xEE};
+socketTest.sendMessageToCar(data, 5);
+*/
+
+class SocketConnection{
 
 public:
 	char* carName;//小车名称,代表一个Socket连接
@@ -26,10 +41,7 @@ public:
 	SocketConnection(char *car, char addressIP[], int ipPort);
 	~SocketConnection();
 
-	//初始化Soket
-	//传递参数 addressIP: 连接的IP地址
-	//传递参数 ipPort :连接的通信端口
-	void initializeSocket(char* car, char* addressIP, int ipPort);
+
 
 	/*****************************************
 	* @方法名:    sendMessageToCar

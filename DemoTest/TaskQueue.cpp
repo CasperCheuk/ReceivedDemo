@@ -9,7 +9,7 @@ CTaskQueue::~CTaskQueue()
 
 }
 
-//工作线程
+//工作线程的任务
 void CTaskQueue::WorkThread(){
 
 	while (m_bIsStart)
@@ -30,11 +30,9 @@ bool CTaskQueue::Push(CTask* task){
 	{
 		return false;
 	}
-
 	m_mutex.lock();
 	m_taskQueue.push(task);
 	m_mutex.unlock();
-
 	return true;
 }
 
@@ -68,7 +66,7 @@ return true;
 void CTaskQueue::Stop(){
 
 	m_bIsStart = false;
-	m_thread.join();
+	m_thread.join();//等待剩余的信息被发送出去
 }
 
 

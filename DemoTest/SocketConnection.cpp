@@ -3,6 +3,26 @@
 using namespace std;
 
 //封装WIFI Socket通信的类
+/*
+//初始化示例
+char*  carname = "blueCar";
+char ipAddress[] = "192.168.1.1";
+int ipPort = 2001;
+SocketConnection socketTest(carname, ipAddress, ipPort);//初始化对象
+
+//发送示例
+char data[] = { 0xAA,0xBB,0xCC,0xDD,0xEE};
+socketTest.sendMessageToCar(data, 5);	//5为char data[]数组长度
+
+//或者
+send(socketTest.sockClient, "hello\n", strlen("hello\n") + 1, 0);
+
+//或者
+sockettest.sendMessageToCar("hello\n", strlen("hello\n") + 1);
+
+*/
+
+
 
 SocketConnection::SocketConnection(char *car, char addressIP[], int ipPort){
 	carName = car;
@@ -20,6 +40,8 @@ SocketConnection::SocketConnection(char *car, char addressIP[], int ipPort){
 	addrServer.sin_family = AF_INET;
 	addrServer.sin_port = htons(ipPort);//绑定端口，默认为2001
 	//如果连接失败,打印信息
+	//connect(sockClient, (SOCKADDR *)&addrServer, sizeof(addrServer))
+	//bind(sockClient, (SOCKADDR*)&addrServer, sizeof(SOCKADDR))
 	if (connect(sockClient, (SOCKADDR *)&addrServer, sizeof(addrServer)) == INVALID_SOCKET){
 		printf("SocketConnect---%s failed:%d \n 连接:IP地址: %s 端口：%d \n", carName, WSAGetLastError(),  addressIP, ipPort);
 	}
@@ -31,12 +53,7 @@ SocketConnection::SocketConnection(char *car, char addressIP[], int ipPort){
 
 SocketConnection::~SocketConnection(){}
 
-	//初始化Soket
-	//传递参数 addressIP: 连接的IP地址
-	//传递参数 ipPort :连接的通信端口
-	void SocketConnection::initializeSocket(char* car, char* addressIP, int ipPort){
 
-	}
 
 
 

@@ -166,12 +166,14 @@
     <ClCompile Include="SocketConnection.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskQueue.cpp" />
+    <ClCompile Include="WifiReceivedThread.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SocketConnection.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskQueue.h" />
+    <ClInclude Include="WifiReceivedThread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
